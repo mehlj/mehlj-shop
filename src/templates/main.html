@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: center;
+}
+td {
+  text-align: center;
+}
+h2 {
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<h2><u>mehlj-shop Inventory</u></h2>
+
+<table style="width:100%">
+  <tr>
+    <th><u>Item</u></th>
+    <th><u>Price</u></th> 
+    <th><u>Quantity Available</u></th>
+  </tr>
+
+  {% for row in rows %}
+    <tr>
+      <td>{{row["item"]}}</td>
+      <td>{{row["price"]}}</td>
+      <td>{{row["quantity"]}}</td>
+    <tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
