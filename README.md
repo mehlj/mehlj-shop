@@ -3,16 +3,12 @@ Simple eCommerce site for learning web development concepts
 
 ## Instructions
 
-### Build
-```
-# docker build -t mehlj-shop .
-```
-
 ### Run
 ```
-# docker run -d -p 5000:5000 mehlj-shop
+# docker-compose up -d 
 ```
-Or, alternatively, run with host-container volume sharing:
+
+### Access
 ```
-# docker run -d -p 5000:5000 -v /root/mehlj-shop/src:/usr/src/app mehlj-shop
+# curl http://127.0.0.1:5000
 ```
