@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, request
 from modules import sql
-import sqlite3 as shopsql
 
 shop = Flask(__name__)
 
@@ -16,28 +15,16 @@ def updateinv():
 
 @shop.route('/addrec',methods = {'POST', 'GET'})
 def addrec():
+    msg = ""
     if request.method == 'POST':
         try:
-            item = request.form['item']
-            price = request.form['price']
-            quantity = request.form['quantity']
-
-            with shopsql.connect("/shop.db") as con:
-                cur = con.cursor()
-
-                cur.execute("""INSERT INTO inventory (item,price,quantity)
-                    VALUES (?,?,?)""",(item,price,quantity) )
-
-                con.commit()
-                msg = "Record succesfully added"
-        except:
-            con.rollback()
-            msg = "Error in insert operation."
-        
+            msg = sql.insert_inventory_item(request.form['item'], 
+                                            request.form['price'],
+                                            request.form['quantity'])
+        except Exception as error:
+            print(str(error))
         finally:
-            # show result of insert, wait 5 seconds, go back to main page
             return render_template("result.html",msg=msg)
-            con.close()
 
 @shop.route('/admin', methods=['GET', 'POST'])
 def admin():
