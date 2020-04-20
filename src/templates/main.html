@@ -1,26 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-th, td {
-  padding: 5px;
-}
-th {
-  text-align: center;
-}
-td {
-  text-align: center;
-}
-h2 {
-  text-align: center;
-}
-</style>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}">
 </head>
 <body>
+<div class="nav-belt">
+  <a class="active" href="/">Home</a>
+  <a href="/contact">Contact</a>
+  <a href="/about">About</a>
+  <a href="/admin">Admin Login</a>
+</div>
 
 <h2><u>mehlj-shop Inventory</u></h2>
 
@@ -39,6 +28,5 @@ h2 {
     <tr>
   {% endfor %}
 </table>
-
 </body>
 </html>
